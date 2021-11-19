@@ -1,5 +1,5 @@
 {
-    "name": "Police App",
+    "name": "PoliceApp",
     "version": "1.0.0",
     "description": "App for storing information on police stuff",
     "main": "app.js",
