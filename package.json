@@ -1,7 +1,7 @@
 {
-    "name": "Dog_App",
+    "name": "Police App",
     "version": "1.0.0",
-    "description": "App for storing information on dogs",
+    "description": "App for storing information on police stuff",
     "main": "app.js",
     "author": "JessePiccione",
     "license": "GPL-3.0-or-later",
@@ -10,10 +10,8 @@
         "es6-promise": "^4.2.8",
         "express": "^4.17.1",
         "express-handlebars": "4.0.1",
-        "isomorphic-fetch": "^3.0.0",
         "multer": "^1.4.2",
         "mysql": "^2.18.1",
-        "puppeteer": "^9.1.1",
         "requirejs": "^2.3.6"
     }
 }

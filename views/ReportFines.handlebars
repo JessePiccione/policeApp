@@ -1,0 +1,41 @@
+<div>
+    <h1 class='tableheader'><b>{{title}}<b></h1>
+    <table>   
+        <tbody>
+            <tr>
+                <th class='bold'>
+                    Report Number
+                </th>
+                <th class='bold'>
+                    Fine Number
+                </th>
+                <th class='bold'>
+                    Editor Column
+                </th>
+            </tr>
+            {{#if results}}
+            {{#each results}}
+            <tr>
+                <td>
+                   {{this.ReportID}} 
+                </td>
+                <td>
+                   {{this.FineID}} 
+                </td>
+                <td>
+                    <input type='submit' value='Update'>
+                    <input type='submit' value='Delete'>
+                </td>
+            </tr>
+            {{/each}}
+            {{/if}}
+            <tr>
+                <td>
+                    <form method="get" action="/add_ReportFines">
+                        <input type='submit' value='Add new Report Fines'>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

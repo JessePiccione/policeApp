@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `Criminals` (
-  `CriminalID` int(11) NOT NULL,
+  `CriminalID` int(11)  NOT NULL,
   `Fname` varchar(255) NOT NULL,
   `Lname` varchar(255) NOT NULL,
   `DoB` date NOT NULL,
@@ -170,6 +170,9 @@ ALTER TABLE `Criminals`
 --
 ALTER TABLE `Fines`
   MODIFY `FineID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+ALTER TABLE `Reports`
+  MODIFY `ReportID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
