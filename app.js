@@ -53,7 +53,6 @@ app.get("/add_Officers", (req, res, next) => {
 
     res.render("add_Officers", context);
 });
-
 app.post("/add_Officers",(req, res, next) => {
 
     let sql = `INSERT INTO Officers(BadgeNumber,Fname,Lname,YearsOfService,Email, Phone)
@@ -242,7 +241,6 @@ app.get("/add_ReportFines", (req, res, next) => {
 
     res.render("add_ReportFines", context);
 });
-
 app.post("/add_ReportFines",(req, res, next) => {
 
     let sql = `INSERT INTO ReportFines(ReportID, FineID)
@@ -270,6 +268,55 @@ app.post("/add_ReportFines",(req, res, next) => {
         });
     });
 });
+//Delete functionality
+app.post("/delete",(req, res, next) => {
+    sql = "DELETE FROM ReportFines WHERE ReportID = ? AND FineID = ?"
+    payload = [req.body.ReportID, req.body.FineID]
+    pool.query(sql, payload, (err, results, fields) => {
+        if (err){
+            next(err)
+            return
+        }
+        let context = {};
+        context.title = "Report Fines";
+        pool.query("SELECT * FROM ReportFines", (err, results, fields) => {
+            if (err) {
+                next(err);
+                return;
+            }
+            context.results = results;
+            res.render("ReportFines", context);
+        });
+    });
+});
+//Update functionality
+app.get("/update", (req, res, next) =>{
+    context = {
+               'ReportID':req.query.ReportID,
+               'FineID':req.query.FineID,
+               'title':"Report Fine"
+               };
+    console.log(context);
+    res.render("update", context);
+});
+app.post("/update", (req, res, next) => {
+    sql = 'UPDATE ReportFines SET FineID = ?, ReportID = ? WHERE ReportID = ? AND FineID = ?'
+ 
+    payload = [req.body.FineID, req.body.ReportID, req.body.OldReportID, req.body.OldFineID]
+    console.log(req.body)
+    pool.query(sql, payload, (err, results, fields) => {
+        if(err){
+            next(err)
+            return
+        }
+        let context = {}
+        pool.query("Select * FROM ReportFines", (err, results, fields) =>{
+            context.title = 'Report Fines';
+            context.results = results;
+            res.render("ReportFines", context)
+        });
+    });
+})
 // 404 and 500 pages
 app.use((req, res) => {
     res.status(404);

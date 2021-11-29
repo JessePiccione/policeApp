@@ -9,8 +9,8 @@
                 <th class='bold'>
                     Fine Number
                 </th>
-                <th class='bold'>
-                    Editor Column
+                <th>
+                    Edit Row
                 </th>
             </tr>
             {{#if results}}
@@ -23,8 +23,16 @@
                    {{this.FineID}} 
                 </td>
                 <td>
-                    <input type='submit' value='Update'>
-                    <input type='submit' value='Delete'>
+                    <form method='get' action="/update">
+                        <input type="hidden" value={{this.ReportID}} name="ReportID">
+                        <input type="hidden" value={{this.FineID}} name="FineID">
+                        <input type='submit' value='Update'>
+                    </form>
+                    <form method='post' action='/delete'>
+                        <input type="hidden" value={{this.ReportID}} name="ReportID">
+                        <input type="hidden" value={{this.FineID}} name="FineID">
+                        <input type='submit' value='Delete'>
+                    </form>
                 </td>
             </tr>
             {{/each}}
